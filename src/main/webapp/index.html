@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="UTF-8">
+    <title>Tmall</title>
+    <meta name="keywords" content="天猫商城" />
+    <meta name="description" content="天猫商城是我的一个非常小巧轻便的商城系统" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+</head>
+<body>
+<div id="index">
+    <nav class="top">
+        <div class="top-bar">
+        <span class="top-left">
+            <span v-if="joinin">
+                <span >欢迎来到Tmall</span>
+                 <span>
+                     <a href="">{{use.use.name}}</a>
+                     <a @click="logout" href="#" >退出</a>
+                 </span>
+                 <span>
+                     <a href="html/info.html">个人中心</a>
+                 </span>
+                <span>
+                     <a href="html/info.html">商家管理</a>
+                 </span>
+            </span>
+            <span v-else>
+                <span >欢迎来到Tmall商城</span>
+                <a href="html/login.html" id="login">请登录</a>
+                <a href="html/regist.html">免费注册</a>
+            </span>
+        </span>
+            <span class="pull-right">
+               <a v-if="use!=null" href="html/myoder.html">我的订单</a>
+              <a @click="shopcart()" href="html/cart.html" v-if="joinin">
+                   <span class=" glyphicon glyphicon-shopping-cart redColor"></span>购物车&nbsp
+                    <strong id="cart-number">{{use.use.cartNum}}</strong>件</a>
+                 <a  @click="shopcart()"   href="html/cart.html" v-else>
+                   <span class=" glyphicon glyphicon-shopping-cart redColor"></span>购物车0件</a>
+                <a v-if="ADMIN" href="admin.html">网站后台</a>
+              </span>
+        </div>
+    </nav>
+    <header class="index-top">
+        <a href="index.html" class="logo">
+            <img src="img/logo.png">
+        </a>
+        <div class="search">
+            <form  >
+                <input type="text" placeholder="查找物品名称" name="keyword">
+                <button class="search-button" type="submit">搜索</button>
+            </form>
+            <ul class="search-below">
+            </ul>
+        </div>
+    </header>
+    <section class="head-bar">
+        <div class="c-menu">
+            <span class="glyphicon glyphicon-th-list icon"></span>
+            <span>商品分类</span>
+        </div>
+        <div class="r-menu">
+            <a href="#nowhere"><img src="img/chaoshi.png"></a>
+            <a href="#nowhere"><img src="img/guoji.png"></a>
+        </div>
+    </section>
+    <section class="carousel">
+        <div data-ride="carousel" class="carousel-of-product carousel slide" id="carousel-of-product" >
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li class="active" data-slide-to="0" data-target="#carousel-of-product"></li>
+                <li data-slide-to="1" data-target="#carousel-of-product" class=""></li>
+                <li data-slide-to="2" data-target="#carousel-of-product" class=""></li>
+                <li data-slide-to="3" data-target="#carousel-of-product" class=""></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div role="listbox" class="carousel-inner">
+                <div class="item active">
+                    <a href="/product?id=27" target="_blank">
+                        <img src="img/1.jpg" class="carousel carousel-image">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/product?id=1" target="_blank">
+                        <img src="img/2.jpg" class="carousel-image">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/product?id=20" target="_blank">
+                        <img src="img/3.png" class="carousel-image">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/product?id=30" target="_blank">
+                        <img src="img/4.png" class="carousel-image">
+                    </a>
+                </div>
+            </div>
+            <div class="m-menu">
+                <ul>
+                    <li v-for="item in list"><a href="#" :class="item.id">{{item.name}}</a>
+                    </li>
+                </ul>
+                <div class="d-menu" style="display: none">
+                    <a v-for="item in list">{{item.name}}</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <main class="index">
+                <div class="products" v-for="item in categroy">
+                    <div class="title-bar">
+                        <i class="color-mark"></i>
+                        <span class="category-title">{{item.name}}</span>
+                    </div>
+                    <div class="product-items" >
+                            <a  href="html/product.html" v-for="i in product" @click="Goproduct(i)" v-if="i.parentid==item.id">
+                                <div class="item">
+                                    <img :src="i.imgaddress[0]">
+                                    <div class="item-title">{{i.subTitle}}</div>
+                                    <div class="item-price">￥{{i.nowPrice}}</div>
+                                </div>
+                            </a>
+                    </div>
+                </div>
+
+        <img src="img/end.png" class="end-png" id="endpng">
+    </main>
+
+    <footer class="footer-top clear">
+        <div class="footer-content">
+            <div class="footer-ensure">
+                <a href="#nowhere1"></a>
+                <a href="#nowhere2"></a>
+                <a href="#nowhere3"></a>
+                <a href="#nowhere4"></a>
+            </div>
+
+            <div class="footer-desc" id="footer-desc">
+                <div class="desc-column">
+                    <span class="desc-column-title">购物指南</span>
+                    <a href="#nowhere">免费注册</a>
+                    <a href="#nowhere">开通支付宝</a>
+                    <a href="#nowhere">支付宝充值</a>
+                </div>
+                <div class="desc-column">
+                    <span class="desc-column-title">本站保障</span>
+                    <a href="#nowhere">发票保障</a>
+                    <a href="#nowhere">售后规则</a>
+                    <a href="#nowhere">缺货赔付</a>
+                </div>
+                <div class="desc-column">
+                    <span class="desc-column-title">支付方式</span>
+                    <a href="#nowhere">快捷支付</a>
+                    <a href="#nowhere">信用卡</a>
+                    <a href="#nowhere">蚂蚁花呗</a>
+                    <a href="#nowhere">货到付款</a>
+                </div>
+                <div class="desc-column">
+                    <span class="desc-column-title">商家服务</span>
+                    <a href="#nowhere">商家入驻</a>
+                    <a href="#nowhere">商家中心</a>
+                    <a href="#nowhere">本站智库</a>
+                    <a href="#nowhere">本站规则</a>
+                    <a href="#nowhere">物流服务</a>
+                    <a href="#nowhere">喵言喵语</a>
+                    <a href="#nowhere">运营服务</a>
+                </div>
+                <div class="desc-column">
+                    <span class="desc-column-title">手机版</span>
+                    <a href="#nowhere"><img src="img/shouji.png"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <footer class="footer-bottom">
+
+        <div class="foot-image"></div>
+        <div class="foot-content">
+            <div class="copyright" id="copyright">
+                <div class="white-link">
+                    <a href="#nowhere">关于本站</a>
+                    <a href="#nowhere">帮助中心</a>
+                    <a href="#nowhere">开放平台</a>
+                    <a href="#nowhere"> 诚聘英才</a>
+                    <a href="#nowhere">联系我们</a>
+                    <a href="#nowhere">网站合作</a>
+                    <a href="#nowhere">法律声明</a>
+                    <a href="#nowhere">知识产权</a>
+                    <a href="#nowhere">廉正举报 </a>
+                </div>
+                <div class="white-link">
+                    <a href="#nowhere"> 阿里巴巴集团</a><span class="slash">|</span>
+                    <a href="#nowhere"> 淘宝网</a><span class="slash">|</span>
+                    <a href="#nowhere">Tmall</a><span class="slash">|</span>
+                    <a href="#nowhere"> 聚划算</a><span class="slash">|</span>
+                    <a href="#nowhere">全球速卖通</a><span class="slash">|</span>
+                    <a href="#nowhere">阿里巴巴国际交易市场</a><span class="slash">|</span>
+                    <a href="#nowhere">1688</a><span class="slash">|</span>
+                    <a href="#nowhere">阿里妈妈</a><span class="slash">|</span>
+                    <a href="#nowhere"> 阿里旅行·去啊 </a><span class="slash">|</span>
+                    <a href="#nowhere"> 阿里云计算 </a><span class="slash">|</span>
+                    <a href="#nowhere"> 友盟 </a><span class="slash">|</span>
+                    <a href="#nowhere"> 虾米 </a><span class="slash">|</span>
+                    <a href="#nowhere"> 天天动听 </a><span class="slash">|</span>
+                    <a href="#nowhere"> 来往 </a><span class="slash">|</span>
+                    <a href="#nowhere"> 钉钉 </a><span class="slash">|</span>
+                    <a href="#nowhere"> 支付宝 </a>
+                </div>
+                <div class="license">
+                    <span>增值电信业务经营许可证： <a href="#nowhere">浙B2-20110446</a></span>
+                    <span>网络文化经营许可证：<a href="#nowhere">浙网文[2015]0295-065号</a></span>
+                    <span><a href="#nowhere">12318举报 </a></span><br>
+                    <span>互联网药品信息服务资质证书编号：<a href="#nowhere">浙-（经营性）-2012-0005</a></span>
+                    <div class="copy-right-year">© 2003-2017 TMALL.COM 版权所有</div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+</body>
+<script src="js/index.js"></script>
+</html>

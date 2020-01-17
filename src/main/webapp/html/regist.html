@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="../js/_jquery.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript" src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+<div class="index">
+    <header class="pay-header login">
+        <a href="../index.html" class="logo">
+            <img src="../img/logo2.png">
+        </a>
+    </header>
+    <main class="register">
+        <form>
+            <table class="register-table">
+                <tbody>
+                <tr>
+                    <td colspan="2" class="register-tip">设置会员名</td>
+                </tr>
+                <tr>
+                    <td class="left-col">登录名</td>
+                    <td class="right-col"><input placeholder="会员名一旦设置成功，无法修改" v-model="pass" name="pass" id="pass"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="register-tip">用户名称</td>
+                </tr>
+                <tr>
+                    <td class="left-col">用户名称</td>
+                    <td class="right-col"><input placeholder="可以是字母数字" v-model="name" name="name" id="name"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="register-tip">设置密码</td>
+                </tr>
+                <tr>
+                    <td class="left-col">登陆密码</td>
+                    <td class="right-col"><input type="password" v-model=" password" placeholder="设置你的登陆密码" name="password" id="password"></td>
+                </tr>
+                <tr>
+                    <td class="left-col">密码确认</td>
+                    <td class="right-col"><input type="password" v-model="repeatpassword" placeholder="请再次输入你的密码" id="repeatpassword"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="register-tip">手机验证</td>
+                </tr>
+                <tr>
+                    <td class="left-col">手机账号</td>
+                    <td class="right-col"><input type="text"  v-model="phoneid" placeholder="正确的手机账号" id="phone"></td>
+                </tr>
+                <tr>
+                    <td class="left-col"><input type="button" value="获取验证码"  @click="testphone(phoneid)"></td>
+                    <td class="right-col"><input type="password" placeholder="手机验证码" v-model="incode" name="code" id="code"></td>
+
+                </tr>
+                <tr>
+                    <td colspan="2" class="button-td">
+                        <input type="hidden" name="refer" id="refer">
+                        <button type="button" @click="f()">提 交</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </main>
+    <footer class="footer-bottom">
+        <div class="foot-content login">
+            <div class="copyright" id="copyright">
+                <div class="white-link login-text">
+                    <a href="#nowhere">关于本站</a>
+                    <a href="#nowhere">帮助中心</a>
+                    <a href="#nowhere">开放平台</a>
+                    <a href="#nowhere"> 诚聘英才</a>
+                    <a href="#nowhere">联系我们</a>
+                    <a href="#nowhere">网站合作</a>
+                    <a href="#nowhere">法律声明</a>
+                    <a href="#nowhere">知识产权</a>
+                    <a href="#nowhere">廉正举报 </a>
+                </div>
+                <div class="white-link login-text">
+                    <a href="#nowhere"> 阿里巴巴集团</a><span class="slash">|</span>
+                    <a href="#nowhere"> 淘宝网</a><span class="slash">|</span>
+                    <a href="#nowhere">${website_name} </a><span class="slash">|</span>
+                    <a href="#nowhere"> 聚划算</a><span class="slash">|</span>
+                    <a href="#nowhere">全球速卖通</a><span class="slash">|</span>
+                    <a href="#nowhere">阿里巴巴国际交易市场</a><span class="slash">|</span>
+                    <a href="#nowhere">1688</a><span class="slash">|</span>
+                    <a href="#nowhere">阿里妈妈</a><span class="slash">|</span>
+                    <a href="#nowhere"> 阿里旅行·去啊 </a><span class="slash">|</span>
+                    <a href="#nowhere"> 阿里云计算 </a><span class="slash">|</span>
+                    <a href="#nowhere"> 友盟 </a><span class="slash">|</span>
+                    <a href="#nowhere"> 虾米 </a><span class="slash">|</span>
+                    <a href="#nowhere"> 天天动听 </a><span class="slash">|</span>
+                    <a href="#nowhere"> 来往 </a><span class="slash">|</span>
+                    <a href="#nowhere"> 钉钉 </a><span class="slash">|</span>
+                    <a href="#nowhere"> 支付宝 </a>
+                </div>
+                <div class="license">
+                    <span>增值电信业务经营许可证： <a href="#nowhere">浙B2-20110446</a></span>
+                    <span>网络文化经营许可证：<a href="#nowhere">浙网文[2015]0295-065号</a></span>
+                    <span><a href="#nowhere">12318举报 </a></span><br>
+                    <span>互联网药品信息服务资质证书编号：<a href="#nowhere">浙-（经营性）-2012-0005</a></span>
+                    <div class="copy-right-year">© 2003-2017 TMALL.COM 版权所有</div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+<script src="../js/regist.js"></script>
+</html>
